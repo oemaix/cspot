@@ -148,8 +148,10 @@ void PlainConnection::readBlock(const uint8_t* dst, size_t size) {
         case EINTR:
           continue;
         default:
-          if (retries++ > 4)
+          if (retries++ > 4) {
+            CSPOT_LOG(error, "read failed n=%d errno=%d", (int)n, getErrno());
             throw std::runtime_error("Error in read");
+          }
           continue;
       }
     }

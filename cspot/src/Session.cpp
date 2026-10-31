@@ -39,6 +39,7 @@ void Session::connect(std::unique_ptr<cspot::PlainConnection> connection) {
   };
   auto helloPacket = this->conn->sendPrefixPacket(
       {0x00, 0x04}, this->challenges->prepareClientHello());
+  CSPOT_LOG(info, "sent client hello %u", (unsigned)helloPacket.size());
   auto apResponse = this->conn->recvPacket();
   CSPOT_LOG(info, "Received APHello response");
 

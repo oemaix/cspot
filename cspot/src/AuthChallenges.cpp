@@ -113,6 +113,7 @@ std::vector<uint8_t> AuthChallenges::prepareClientHello() {
   clientHello.build_info.product = Product_PRODUCT_CLIENT;
   clientHello.build_info.platform = Platform2_PLATFORM_LINUX_X86;
   clientHello.build_info.version = SPOTIFY_VERSION;
+  clientHello.feature_set.has_autoupdate2 = true;
   clientHello.feature_set.autoupdate2 = true;
   clientHello.cryptosuites_supported[0] = Cryptosuite_CRYPTO_SUITE_SHANNON;
   clientHello.padding[0] = 0x1E;
